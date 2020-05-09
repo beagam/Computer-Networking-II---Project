@@ -1,0 +1,17 @@
+Task 2: Uplink to Mars (latency)
+In just a few years we need to be ready to incorporate the first settlements on Mars into the Internet. 
+This means assigning addresses (easy), top-level domains (also easy) and, most importantly, actually making 
+it possible for colonists to communicate with hosts back on Earth. 
+
+It is required that users are able to use TCP/IP on the application layer 
+(as it is too costly to rewrite all software from scratch), which calls for some sort of proxy servers 
+to address the issue with propagation time from Mars to Earth (anywhere from 3 to 30 minutes). 
+The proposed solution needs to address the issue of packet damage during transfer from Earth to 
+Mars during opposition (when distance is furthest). In particular, any packet lost in transit from 
+Earth to Mars would need to be retransmitted, increasing overall delivery latency to absolutely 
+intolerable 75 minutes, thus making any sort of human-to-human interaction totally unmanageable. 
+
+A reasonable solution to this needs to be suggested, such that overall maximum delay could be confined 
+to somewhere around 45 minutes. Keep in mind that you would likely require some form of a relay station 
+such that signal could be routed around the Sun (as it is a pretty strong noise source). The position and 
+functionality of such relay station is entirely up to your decision.
