@@ -1,7 +1,4 @@
-1. Revisar cabecera
 2. Revisar longitud d las paginas
-3. Numero RFC
-4. Style guide
 5. Copyright?
 6.Revisar indice y poner bien las paginas
 
@@ -15,9 +12,20 @@ Category: Experimental                                         May, 2020
 Abstract
 
    This document describes the funcionalities and requirements needed in
-   order to stablish the uplink communication system from the Earth to 
-   Mars. Several procedures are suggested so the latency is reduced when 
-   processing missing packages.
+   order to establish the uplink communication system from Mars to Earth.
+   Several procedures are suggested so the latency is reduced when 
+   processing missing packages. The addresses that will be used and the 
+   submission for a domain are stated as basic specifications.
+
+   Suggestions regarding the management of missing packages so that the
+   latency is below 45 minutes are made, focusing on the situation where
+   the Earth and Mars are furthest (when the Sun is the middle). The use
+   of a relay station is suggested, specifying the location and logical
+   functionality of such station, in order to proccess the missing 
+   packets.
+
+   On the application layer, TCP/IP is used for convenience, as it is
+   widely used and the code is avaliable.
 
 Status of This Memo
 
@@ -70,24 +78,6 @@ RFC NNNN           	      Uplink to Mars         	       May, 2020
 
 1.  Introduction
 
-   The following documents states suggestions and recommendations in order
-   to establish an uplink communications with Mars. The addresses that
-   will used and the submission for a domain are stated as basic 
-   specifications.
-
-   Suggestions regarding the management of missing packages so that the
-   latency is below 45 minutes are made, focusing on the situation where
-   the Earth and Mars are furthest (when the Sun is the middle). The use
-   of a relay station is suggested, specifying the location and logical
-   functionality of such station, in order to proccess the missing 
-   packets.
-
-   On the application layer, TCP/IP is used for convenience, as it is
-   widely used and the code is avaliable.
-   
-
-
-
 1.1.  Question statement
 
    "In just a few years we need to be ready to incorporate the first 
@@ -121,23 +111,76 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
    decision."
 
 
-2  Basic specifications
+
+2.  Interplanetary communications
+
+   In order to perform the analysis for a correct communication link between
+   Mars and Earth, there are a few considerations that need to be specified
+   and taken into account.
+
+
+   o  interplanetary communications are carried by electromanetic waves, 
+      and the speed of propagation of the waves is about 300,000 kilometers
+      per second.
+
+   o  the distance between Mars and Earth varies depending on the orbit phase
+      they are in. The minimum distance is 55 million km and the maximum is
+      378 million km.  
+
+   o  the minimum propagation time that can be achieved between Mars and the Earth
+      occurs when they are closest, and it is of around 3 minutes.
+
+   o  the maximum propagation time that can be achieved between Mars and the Earth
+      occurs when they are furthest and it is of around 30 minutes.
+
+   o  an acceptable overall latency delay is of around 45 minutes, while 75 is
+      totally unaceptable for human interaction.
+
+
+3.  Proposal
+
+   The proposed solution states a suggestion to be used in order to reduce
+   the overall delay latency due to retrasmission when a packet is lost
+   when it is router around the Sun. The main problem is that the Sun 
+   produces strong noise which damages the packets. This situation
+   takes place when Mars and Earth are in cojunction phase (the Sun is
+   the middle and distance is furthest), the distance between them is of
+   378 million km and the propagation time is of around 30 minutes.
+
+   If a packet is lost and needs to be retrasmitted, the overall delay will
+   be around 75 minutes in this situation. Also, if the communication link
+   is performed directly by the hosts traveling on the natural orbits around
+   the Sun, it is not going to be possible to communicate continuously for 
+   a time, and there will be a massive amount of packets lost.
+
+   The proposed solution is to reduce the number of packets lost due to the
+   distance between Mars and Earth. If the packets are not lost because of
+   the conjuntion phase and the noise produced by the Sun, the overall
+   latency will be below 45 minutes, as the propagation time in this 
+   situation between Mars and Earth does not exceed 30 minutes.
+
+   In order to let the packets be correctly transmitted in this situation, 
+   in the present document the use of relay stations is proposed. In 
+   section 4 the location and fuctionality of such is described. Also, the
+   basic specifications for the IP addresses and request for a domain 
+   are described.
+
+
+3.1.  Basic specifications
 
    In the following section the basic specifications of the 
    communication link between the Earth and Mars are described. In 
    order to establish the link, it is needed to assign the addresses
    an a top-level domain.
 
-2.1.  Network topology
+3.1.1  Network topology
 
    Aqui ponems el diagrama d como va a ser la red y lo explicams
 
-2.2.  Addresses
 
+3.1.2. IP Addresses
 
-2.1. IP Addresses
-
-   (1) Introduction
+3.1.2.1 Introduction
     
    In order to connect to the Earth`s Internet network, hosts in Mars
    need IP addresses to be able to use TCP/IP as host in Earth do 
@@ -159,7 +202,7 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
    automate the configuration of the internet access and make life 
    easier to every client of the network who desired it.
 
-   (3) IPv6 addresses
+3.1.2.2 IPv6 addresses
 
    In the earth, only three /3 IPv6 addresses blocks are used and 
    that’s enough to cover all the needs by the moment, so we have 
@@ -180,9 +223,9 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
    allowing to create private networks that access the internet using a 
    single public IPv6 Network.
 
-	 (2) SLAAC & DHCP for dynamic IPs
+3.1.2.3 SLAAC & DHCP for dynamic IPs
 
-	 For the dynamic assignment of IPs presented before, IPv6 offers two
+   For the dynamic assignment of IPs presented before, IPv6 offers two
    kinds of address autoconfiguration. 
    
    On the one hand, stateful autoconfiguration technique is accomplished 
@@ -211,24 +254,12 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
  
 
 
-
-Touch                         Informational                     [Page 4]
-
-RFC 5385           Version 2.0 Microsoft Word Template     February 2010
-
-
-
-
-
-
-
-
 Touch                         Informational                     [Page 5]
 
 RFC 5385           Version 2.0 Microsoft Word Template     February 2010
 
 
-2.3.  Top-level domain
+3.1.3.  Top-level domain
 
    According to RFC 920: Domain Requirements, in order to establish a 
    the following information must be provided to the NIC Domain Registar
@@ -246,7 +277,7 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
             Organization  Tampere University
             Name          Maria
             Title         Executive Director
-            Mail Address  USC/ISI
+            Mail Address  Tampere University (Hervanta Campus)
                           Korkeakoulunkatu 7 Kampusareena
                           Tampere, FI. 33720
             Phone Number  555-555-555
@@ -259,7 +290,7 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
             Organization  Tampere University
             Name          Jose
             Title         Researcher
-            Mail Address  USC/ISI
+            Mail Address  Tampere University (Hervanta Campus)
                           Korkeakoulunkatu 7 Kampusareena
                           Tampere, FI. 33720
             Phone Number  555-555-555
@@ -272,7 +303,7 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
             Organization  Tampere University
             Name          Jose
             Title         Researcher
-            Mail Address  USC/ISI
+            Mail Address  Tampere University (Hervanta Campus)
                           Korkeakoulunkatu 7 Kampusareena
                           Tampere, FI. 33720
             Phone Number  555-555-555
@@ -310,16 +341,17 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
 
 
 
-3.  Relay station
+3.2.  Relay station
 
    In the following section, the specifications regarding the relay
    station that will be used in order to route the signal around the
    Sun are described. The purpose of using such station is that the 
    noise produced in this area will interfer and jam the signal, so 
-   its use is suggested for filtering purposes. The proposal includes
+   its use is suggested for cleaning purposes. The proposal includes
    two spacecrafts acting as relay stations.
 
-3.1.  Location
+
+3.2.1.  Location
 
    When any type of satellite or station is placed onto the space, it
    will follow the natural orbit around the Sun (also referred as orbit
@@ -344,13 +376,16 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
    conjuction season lasts (when the Eart and Mars are furthest). Once it 
    is over, they will go back to the Keplerian orbits and save fuel.
 
-   Therefore, the suggested location for the relay stations is the B orbits
+   Therefore, the suggested location for the relay stations is the B orbit
    of Mars.
    
 
-3.2.  Funcionality
+3.2.2.  Funcionality
 
    Logica d la relay station
+
+
+4.  Conclusions
 
 
 Informative References
