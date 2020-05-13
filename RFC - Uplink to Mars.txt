@@ -432,62 +432,64 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
 
 3.2.2.  Funcionality
 
-   Once we have deal with the problem of te link blocked by the sun
-   in the conjuntion escenario whe have to deal with the problem packet 
+   Once we have deal with the problem of the link blocked by the sun
+   in the conjunction scenario we have to deal with the problem packet 
    delivery in a reasonable time that allows colonists to communicate 
-   with hosts back on Earth. These relays will have two differnet  radio 
+   with hosts back on Earth. These relays will have two different radio 
    links, a link to the surface of Mars and a link to a satellite 
-   network orbiting Earth that will proviide conection to the Earths 
-   surface. Obviously, the main  problem is not in the links from the 
+   network orbiting Earth that will provide connection to the Earths 
+   surface. Obviously, the main problem is not in the links from the 
    satellites to the surface of the planet, the big deal is to find a 
    reliable and fast way to transmit the packets through the link 
-   between Mars and Earth's satellites in order to provide QoS to  
+   between Mars and Earth's satellites to provide QoS to  
    the users in both planets. 
    
-   As spotted before, both Mars and Earth notworks need to use TCP/IP in 
-   order tobe consistent wiht the protocols and to avoid write another 
-   software from scratch. The problem of TCP is that need to acknoledge 
-   all the packets and in the case of failure, retransmision should be 
-   done, incresing the latency to twice the tranmision time plus the 
-   expected time needed to receive the ack, transmision time again. We 
-   know in advance that transmision time from Earth to Mars goes from 3 
-   to 30 minutes and in this scenario, retransmisions are not a choice
-   due to we overcome the 45 min requested as maximum delay. 
+   As spotted before, both Mars and Earth networks need to use TCP/IP in 
+   order to be consistent with the protocols and to avoid write another 
+   software from scratch. The problem of TCP is that need to acknowledge 
+   all the packets and in the case of failure, retransmission should be 
+   done, increasing the latency to twice the transmission time plus the 
+   expected time needed to receive the ack, transmission time again. We 
+   know in advance that transmission time from Earth to Mars goes from 3 
+   to 30 minutes and in this scenario, retransmissions are not a choice
+   because we overcome the 45 min requested as maximum delay. 
    
-   As we want to avoid retransmisions in the interplanetary link, we 
-   have to avoid the packets to be damaged and those no retransmisions 
+   As we want to avoid retransmissions in the interplanetary link, we 
+   have to avoid the packets to be damaged and those no retransmissions 
    are needed. Although we have solved the problem for packet damage 
-   when the sun is in  between both planets by using the relays, 
+   when the sun is in between both planets by using the relays, 
    packets can still be lost for other reasons like congestion or 
    interfaces.
    
-   This lead us to our solution to the retransmision problem, that involves 
+   This lead us to our solution to the retransmission problem, that involves 
    the concept of Store and Forward. This concept is based on the idea of 
    storing the incoming packets until the link is available and free of 
    interferences. In this way, packets will never be lost due to a 
-   continious update of the link state wil be done to let both ends of 
-   the links know when transmision can be done. In order to actialize
-   and keep tack of the link state, a signaling protocol is going to 
+   continuous update of the link state will be done to let both ends of 
+   the links know when transmission can be done. To actualize
+   and keep tack of the link state, a signalling protocol is going to 
    be deployed to enhance the performance of the TCP/IP.
    
-   This signaling system is very simple. It only consists of some 
+   This signalling system is very simple. It only consists of some 
    periodical signals sent each 30 seconds from both ends in order 
-   to let the other end of the link wether the link has some problem 
-   or not. This signals are known by both ends and those they
-   can see ow the signal has being modified by the link and in this way 
-   stimate if the link can introduce errors or if its save to transmit 
+   to let the other end of the link whether the link has some problem 
+   or not. These signals are known by both ends and those they
+   can see ow the signal has been modified by the link and in this way 
+   estimate if the link can introduce errors or if its safe to transmit 
    the traffic previously stored.
    
    In addition, some other solutions would be useful to reduce the 
    congestion situation and in this way to reduce the packet lost and 
-   decrease the waitings. The first one would be obviously copy all the 
+   decrease the waiting. The first one would be obviously copying all the 
    internet information and store it in new servers in mars so most of 
-   the daa is already stored in Mars and those only live data should be
-   transmited over the interplanetary link. Secondly, due to the long 
+   the data is already stored in Mars and those only live data should be
+   transmitted over the interplanetary link. Secondly, due to the long 
    distances data is exposed to very high jitter and those it may not 
-   arrive at the same time. To deal with it, de-jittered buﬀer chould 
+   arrive at the same time. To deal with it, de-jittered buﬀer could 
    be used in order the receiver to be able to get all the data in 
    one piece.
+
+   
 
 
 Task 2                          Experimental                    [Page 9]
