@@ -1,6 +1,4 @@
-2. Revisar longitud d las paginas
-5. Copyright?
-6.Revisar indice y poner bien las paginas
+
 
 Independent Submission                                            Task 2
 Request for Comments: NNNN                            Tampere University
@@ -11,7 +9,7 @@ Category: Experimental                                         May, 2020
 
 Abstract
 
-   This document describes the funcionalities and requirements needed in
+   This document describes the functionalities  and requirements needed in
    order to establish the uplink communication system from Mars to Earth.
    Several procedures are suggested so the latency is reduced when 
    processing missing packages. The addresses that will be used and the 
@@ -33,9 +31,9 @@ Status of This Memo
    project of the course Computer Networking II at Tampere University.
 
 
-Touch                          Experimental                     [Page 1]
+Task 2                          Experimental                    [Page 1]
 
-RFC NNNN          	      Uplink to Mars         	       May, 2020
+RFC NNNN          	           Uplink to Mars         	       May, 2020
 
 
 Copyright Notice
@@ -53,14 +51,22 @@ Copyright Notice
 Table of Contents
 
    1. Introduction ....................................................3
-      1.1 Question statement ..........................................
-   2. Basic specifications ............................................3
-      2.1. Network topology ...........................................X
-      2.1. IP Adresses ................................................4
-      2.2. Top-level domain ...........................................4
-   3. Relay station ...................................................7
-      3.1. Position ...................................................7
-      3.2. Funcionality ...............................................8
+      1.1. Motivation .................................................3
+      1.2. Question statement .........................................3
+   2.  Interplanetary communications ..................................4
+   3.  Proposal .......................................................5
+      3.1.  Basic specifications  .....................................5
+        3.1.1  Network topology .......................................5
+        3.1.2. IP Addresses ...........................................6
+          3.1.2.1. Introduction .......................................6
+          3.1.2.2. IPv6 addresses .....................................6
+          3.1.2.3 SLAAC & DHCP for dynamic IPs ........................6
+        3.1.3.  Top-level domain ......................................7
+      3.2.  Relay station .............................................8
+        3.2.1.  Location ..............................................8
+        3.2.2.  Funcionality ..........................................9
+   4.  Conclusions ...................................................10
+   References ........................................................11
       
 
 
@@ -71,9 +77,9 @@ Table of Contents
 
 
 
-Touch                         Informational                     [Page 2]
+Task 2                          Experimental                    [Page 2]
 
-RFC NNNN           	      Uplink to Mars         	       May, 2020
+RFC NNNN          	           Uplink to Mars         	       May, 2020
 
 
 1.  Introduction
@@ -107,9 +113,9 @@ RFC NNNN           	      Uplink to Mars         	       May, 2020
 
 
 
-Touch                         Informational                     [Page 3]
+Task 2                          Experimental                    [Page 3]
 
-RFC 5385           Version 2.0 Microsoft Word Template     February 2010
+RFC NNNN          	           Uplink to Mars         	       May, 2020
 
 
    (easy), top-level domains (also easy) and, most importantly, actually 
@@ -157,6 +163,12 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
 
    o  an acceptable overall latency delay is of around 45 minutes, while 75 is
       totally unaceptable for human interaction.
+      
+      
+      
+Task 2                          Experimental                    [Page 4]
+
+RFC NNNN          	           Uplink to Mars         	       May, 2020
 
 
 3.  Proposal
@@ -195,14 +207,21 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
    order to establish the link, it is needed to assign the addresses
    an a top-level domain.
 
-3.1.1  Network topology
+3.1.1.  Network topology
 
-   Aqui ponems el diagrama d como va a ser la red y lo explicams
+   The network consists of several hosts that use TCP/IP over satellite
+   interplanetar communications, and the proposal is to use two relay
+   stations so that Mars and Earth can be on continuous communications.
+
+
+Task 2                          Experimental                    [Page 5]
+
+RFC NNNN          	           Uplink to Mars         	       May, 2020
 
 
 3.1.2. IP Addresses
 
-3.1.2.1 Introduction
+3.1.2.1. Introduction
     
    In order to connect to the Earth`s Internet network, hosts in Mars
    need IP addresses to be able to use TCP/IP as host in Earth do 
@@ -224,7 +243,7 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
    automate the configuration of the internet access and make life 
    easier to every client of the network who desired it.
 
-3.1.2.2 IPv6 addresses
+3.1.2.2. IPv6 addresses
 
    In the earth, only three /3 IPv6 addresses blocks are used and 
    that’s enough to cover all the needs by the moment, so we have 
@@ -245,7 +264,7 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
    allowing to create private networks that access the internet using a 
    single public IPv6 Network.
 
-3.1.2.3 SLAAC & DHCP for dynamic IPs
+3.1.2.3. SLAAC & DHCP for dynamic IPs
 
    For the dynamic assignment of IPs presented before, IPv6 offers two
    kinds of address autoconfiguration. 
@@ -275,10 +294,10 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
 
  
 
-
-Touch                         Informational                     [Page 5]
+Task 2                          Experimental                    [Page 6]
 
-RFC 5385           Version 2.0 Microsoft Word Template     February 2010
+RFC NNNN          	           Uplink to Mars         	       May, 2020
+
 
 
 3.1.3.  Top-level domain
@@ -362,6 +381,10 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
          (d) five years =  10000
 
 
+Task 2                          Experimental                    [Page 7]
+
+RFC NNNN          	           Uplink to Mars         	       May, 2020
+
 
 3.2.  Relay station
 
@@ -401,61 +424,98 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
    Therefore, the suggested location for the relay stations is the B orbit
    of Mars.
    
+   
+Task 2                          Experimental                    [Page 8]
+
+RFC NNNN          	           Uplink to Mars         	       May, 2020
+
 
 3.2.2.  Funcionality
 
    Once we have deal with the problem of te link blocked by the sun
    in the conjuntion escenario whe have to deal with the problem packet 
-   delivery in a reasonable time that allows colonists to communicate with 
-   hosts back on Earth. These relays will have two differnet  radio links, a 
-   link to the surface of Mars and a link to a satellite network orbiting Earth
-   that will proviide conection to the Earths surface. Obviously, the main 
-   problem is not in the links from the satellites to the surface of the planet, 
-   the big deal is to find a reliable and fast way to transmit the packets
-   through the link between Mars and Earth's satellites in order to provide QoS to 
+   delivery in a reasonable time that allows colonists to communicate 
+   with hosts back on Earth. These relays will have two differnet  radio 
+   links, a link to the surface of Mars and a link to a satellite 
+   network orbiting Earth that will proviide conection to the Earths 
+   surface. Obviously, the main  problem is not in the links from the 
+   satellites to the surface of the planet, the big deal is to find a 
+   reliable and fast way to transmit the packets through the link 
+   between Mars and Earth's satellites in order to provide QoS to  
    the users in both planets. 
    
-   As spotted before, both Mars and Earth notworks need to use TCP/IP in order to
-   be consistent wiht the protocols and to avoid write another software from scratch.
-   The problem of TCP is that need to acknoledge all the packets and in the case 
-   of failure, retransmision should be done, incresing the latency to twice the 
-   tranmision time plus the expected time needed to receive the ack, transmision time
-   again. We know in advance that transmision time from Earth to Mars goes from 3 to 
-   30 minutes and in this escenario, retransmisions are not a choice due to we
-   overcome the 45 min requested as maximum delay. 
+   As spotted before, both Mars and Earth notworks need to use TCP/IP in 
+   order tobe consistent wiht the protocols and to avoid write another 
+   software from scratch. The problem of TCP is that need to acknoledge 
+   all the packets and in the case of failure, retransmision should be 
+   done, incresing the latency to twice the tranmision time plus the 
+   expected time needed to receive the ack, transmision time again. We 
+   know in advance that transmision time from Earth to Mars goes from 3 
+   to 30 minutes and in this scenario, retransmisions are not a choice
+   due to we overcome the 45 min requested as maximum delay. 
    
-   As we want to avoid retransmisions in the interplanetary link, we have to avoid the
-   packets to be damaged and those no retransmisions are needed. Although we have solve
-   the problem fo packet damage when the sun is in between both planets by using the
-   relays, packets can still be lost for othr reasons like congestion or interfaces.
-   This lead us to our solution to the retransmision problem, that involves the 
-   concept of Store and Forward. This concept is based on the idea of storing the 
-   incoming packets until the link is available and free of interferences. In this way, 
-   packets will never be lost due to a continious update of the link state wil be done 
-   to let both ends of the links know when transmision can be done. In order to actialize
-   and keep tack of the link state, a signaling protocol is going to be deployed to
-   enhance the performance of the TCP/IP.
+   As we want to avoid retransmisions in the interplanetary link, we 
+   have to avoid the packets to be damaged and those no retransmisions 
+   are needed. Although we have solved the problem for packet damage 
+   when the sun is in  between both planets by using the relays, 
+   packets can still be lost for other reasons like congestion or 
+   interfaces.
    
-   This signaling system is very simple. It only consists of some periodical signals 
-   sent each 30 seconds from both ends in order to let the other end of the link wether 
-   the link has some problem or not. This signals are known by both ends and those they
-   can see ow the signal has being modified by the link and in this way stimate if the
-   link can introduce errors or if its save to transmit the traffic previously stored.
+   This lead us to our solution to the retransmision problem, that involves 
+   the concept of Store and Forward. This concept is based on the idea of 
+   storing the incoming packets until the link is available and free of 
+   interferences. In this way, packets will never be lost due to a 
+   continious update of the link state wil be done to let both ends of 
+   the links know when transmision can be done. In order to actialize
+   and keep tack of the link state, a signaling protocol is going to 
+   be deployed to enhance the performance of the TCP/IP.
    
-   In addition, some other solutions would be useful to reduce the congestion situation
-   and in this way to reduce the packet lost and decrease the waitings. The first one
-   would be obviously copy all the internet information and store it in new servers in 
-   mars so most of the daa is already stored in Mars and those only live data should be
-   transmited over the interplanetary link. Secondly, due to the long distances data 
-   is exposed to very high jitter and those it may not arrive at the same time. To deal 
-   with it, de-jittered buﬀer chould be used in order the receiver to be able to get all
-   the data in one piece.
+   This signaling system is very simple. It only consists of some 
+   periodical signals sent each 30 seconds from both ends in order 
+   to let the other end of the link wether the link has some problem 
+   or not. This signals are known by both ends and those they
+   can see ow the signal has being modified by the link and in this way 
+   stimate if the link can introduce errors or if its save to transmit 
+   the traffic previously stored.
+   
+   In addition, some other solutions would be useful to reduce the 
+   congestion situation and in this way to reduce the packet lost and 
+   decrease the waitings. The first one would be obviously copy all the 
+   internet information and store it in new servers in mars so most of 
+   the daa is already stored in Mars and those only live data should be
+   transmited over the interplanetary link. Secondly, due to the long 
+   distances data is exposed to very high jitter and those it may not 
+   arrive at the same time. To deal with it, de-jittered buﬀer chould 
+   be used in order the receiver to be able to get all the data in 
+   one piece.
 
-   Logica d la relay station
+
+Task 2                          Experimental                    [Page 9]
+
+RFC NNNN          	           Uplink to Mars         	       May, 2020
+
 
 
 4.  Conclusions
 
+
+The task to create an interplanetary internet between Earth and Mars 
+	is not a choice with the technology we have nowadays due to the
+	huge latencies and delays that the large distances and diverse 
+	mediums introduce. However, the solution we propose bring us a step 
+	closer to the dream of having real time communications between Mars
+	and Earth. Our solution uses TCP/IP as mentioned before, but other
+	protocols designed specifically for spatial communications are 
+	being deployed nowadays and therefore, the most obvious solution
+	is not to keep using the same protocols than in the earth but 
+	make these old protocols compatible with the new ones so they can 
+	coexist to reach the best approach to this communications problem.
+
+
+
+Task 2                          Experimental                    [Page 10]
+
+RFC NNNN          	           Uplink to Mars         	       May, 2020
 
 Informative References
 
@@ -465,6 +525,15 @@ Informative References
 
    [2]   Space Academy "Communication Delay" 
          (https://www.spaceacademy.net.au/spacelink/commdly.htm)
+         
+   [3]   NASA "Advanced Exploration Systems"
+         (https://www.nasa.gov/content/dtn)
+         
+   [4] 
+         (https://scienceandtechnology.jpl.nasa.gov/research/research-topics-
+           list/communications-computing-software/deep-space-communications)
+           
+   [RFC920]  https://tools.ietf.org/html/rfc920
 
 
 
@@ -476,6 +545,6 @@ Informative References
 
 
 
-
-
-Touch                         Informational                    [Page 20]
+Task 2                          Experimental                    [Page 11]
+
+RFC NNNN          	           Uplink to Mars         	       May, 2020
