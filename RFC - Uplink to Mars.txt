@@ -3,9 +3,10 @@
 3. Numero RFC
 4. Style guide
 5. Copyright?
+6.Revisar indice y poner bien las paginas
 
 Independent Submission                                            Task 2
-Request for Comments: NNNN                                       USC/ISI
+Request for Comments: NNNN                            Tampere University
 Category: Experimental                                         May, 2020
 
 
@@ -46,27 +47,13 @@ Table of Contents
    1. Introduction ....................................................3
       1.1 Question statement ..........................................
    2. Basic specifications ............................................3
+      2.1 Network topology ............................................X
       2.1. Adresses ...................................................4
       2.2. Top-level domain ...........................................4
-   3. Changes from RFC 3285 ...........................................7
-      3.1. Heading Styles .............................................7
-      3.2. References Style ...........................................8
-      3.3. Boilerplate ................................................9
-      3.4. Simplification .............................................9
-      3.5. Ability to Direct Print and Direct View ....................9
-   4. Compatibility Issues ...........................................10
-   5. Security Considerations ........................................10
-   6. Acknowledgments ................................................10
-   Appendix A. Template Configuration Details ........................11
-      A.1. Configure Styles ..........................................11
-           A.1.1. Redefine Existing Styles ...........................11
-           A.1.2. Add New Styles .....................................12
-           A.1.3. Hidden Styles ......................................13
-      A.2. Define Page Layout ........................................13
-      A.3. Insert Boilerplate ........................................14
-      A.4. Automatic Fields ..........................................15
-   Appendix B. Post-Processor Script (Perl) ..........................17
-   Informative References ............................................20
+   3. Relay station ...................................................7
+      3.1. Position ...................................................7
+      3.2. Funcionality ...............................................8
+      
 
 
 
@@ -83,20 +70,35 @@ RFC NNNN           	      Uplink to Mars         	       May, 2020
 
 1.  Introduction
 
+   The following documents states suggestions and recommendations in order
+   to establish an uplink communications with Mars. The addresses that
+   will used and the submission for a domain are stated as basic 
+   specifications.
+
+   Suggestions regarding the management of missing packages so that the
+   latency is below 45 minutes are made, focusing on the situation where
+   the Earth and Mars are furthest (when the Sun is the middle). The use
+   of a relay station is suggested, specifying the location and logical
+   functionality of such station, in order to proccess the missing 
+   packets.
+
+   On the application layer, TCP/IP is used for convenience, as it is
+   widely used and the code is avaliable.
    
 
 
 
 1.1.  Question statement
 
-   In just a few years we need to be ready to incorporate the first 
+   "In just a few years we need to be ready to incorporate the first 
    settlements on Mars into the Internet. This means assigning addresses 
 
 
 
 Touch                         Informational                     [Page 3]
 
-RFC NNNN          	      Uplink to Mars         	       May, 2020
+RFC 5385           Version 2.0 Microsoft Word Template     February 2010
+
 
    (easy), top-level domains (also easy) and, most importantly, actually 
    making it possible for colonists to communicate with hosts back on 
@@ -115,53 +117,22 @@ RFC NNNN          	      Uplink to Mars         	       May, 2020
    minutes. Keep in mind that you would likely require some form of 
    a relay station such that signal could be routed around the Sun 
    (as it is a pretty strong noise source). The position and 
-   functionality of such relay station is entirely up to your decision.
+   functionality of such relay station is entirely up to your 
+   decision."
 
 
 2  Basic specifications
 
    In the following section the basic specifications of the 
    communication link between the Earth and Mars are described. In 
-   order to stablish the link, it is needed to assign the addresses
+   order to establish the link, it is needed to assign the addresses
    an a top-level domain.
 
-2.1. IP Addresses
- 
-  (1) Introduction
-  
-  In order to connect to the Earth`s Internet network, hosts in Mars
-  need IP addresses to be able to use TCP/IP as host in Earth do almost
-  every time when using Internet conexion.
-  
-  IPv4 have already runned out in Earth and IPv6 is being deployed slowly
-  due to introduce IPv6 to completely sustitude IPv4 would be very costly
-  regarding both hardware and software and because there are ways to allow 
-  both versions to coexist. In our case, as we are going to develop the 
-  network from scratch, we have decided to use IPv6 from the beginning.  
-  
-  IPs could be assigned manualy if desired, but this is a very 
-  tedious work that makes no sense when designing a network topology
-  planed to be continiously changing and growing. As said beofore, assign 
-  static IPs is always a chioce and in some cases is even better for specific
-  needs, but an automatic procedure is required to simplify and automate the 
-  configuration of the internet access and make life easier to every client of
-  the network who desired it.
-  
-  (2) SLAAC and DHCP for dynamic IP assigment
-  
-  For this propose, we are going to use the well-known Dynamic Host Configuration 
-  Protocol version 6 (DHCPv6) specified in the RFC 8415. This protocol, the
-  evolution of DHCP used in IPv4, uses DHCP servers that assigns dynamically 
-  IPv6 addresses and other configuration information needed to stablish a connection
-  to the rest of IP networks, like network masks, a default gateway and DNS server,
-  to every host (DCHP client) that request it and prove to have the rights to get that
-  information.
-  
-  DHCP servers are as in the earth in the routers, and can be configured by the owner 
-  of the router to work in the way they desired
-  
-  (3) IPv6 
+2.1.  Network topology
 
+   Aqui ponems el diagrama d como va a ser la red y lo explicams
+
+2.2.  Addresses
 
 
 
@@ -178,15 +149,17 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
 
 
 
+
+
 Touch                         Informational                     [Page 5]
 
 RFC 5385           Version 2.0 Microsoft Word Template     February 2010
 
 
-2.2.  Top-level domain
+2.3.  Top-level domain
 
    According to RFC 920: Domain Requirements, in order to establish a 
-   the following information must be provided to the NIC Domain Register
+   the following information must be provided to the NIC Domain Registar
    (HOSTMASTER@SRI-NIC.ARPA):
 
    1)  The name of the top level domain to join.
@@ -265,17 +238,50 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
 
 
 
-2.4.  Generating Output
+3.  Relay station
 
-   This template supports printing similar output both to regular
-   printers (8.5 x 11 inch paper) and as Internet-Draft/RFC-compatible
-   text files.  Printing to a printer is designed for Windows XP and
-   Vista and may work with earlier versions of Windows; it has not been
-   tested with other OS's.  The template is currently in a Word 97-2003
-   format (.dot); this can be used in "Compatibility Mode" in Word 2007.
+   In the following section, the specifications regarding the relay
+   station that will be used in order to route the signal around the
+   Sun are described. The purpose of using such station is that the 
+   noise produced in this area will interfer and jam the signal, so 
+   its use is suggested for filtering purposes. The proposal includes
+   two spacecrafts acting as relay stations.
 
-   Printing to text is supported only for Windows at this time.  There
-   is no current support for XML.  Details are provided as follows.
+3.1.  Location
+
+   When any type of satellite or station is placed onto the space, it
+   will follow the natural orbit around the Sun (also referred as orbit
+   A) called the Keplerian orbits. If the relay station is placed on the
+   Keplerian orbits, the communications will be blocked by the Sun at 
+   some points, which will lead to uncontinuous communications between
+   the Earth and Mars.
+
+   According to the paper "Non-Keplerian Orbits Using Low Thrust,
+   High ISP Propulsion Systems" there is a way
+   to overcome this problem, by placing the satellite on the B orbits
+   (also called non-Keplerian orbits), which are displaced orbits. It has
+   been shown that if you can provide continuous thrust, it is possible to
+   place two different satellites that would work as the relay stations
+   and provide continuous communications between the Earth and Mars. There
+   is need to place two relay stations beacause that way it is ensured that
+   that at least one of them would always be in view of both planets,
+   according to the ESA engineer.
+
+   The process of thrusting is a high-consumption task for the spacecraft, 
+   so the idea is to place the satellites on the B orbits while the 
+   conjuction season lasts (when the Eart and Mars are furthest). Once it 
+   is over, they will go back to the Keplerian orbits and save fuel.
+
+   Therefore, the suggested location for the relay stations is the B orbits
+   of Mars.
+   
+
+3.2.  Funcionality
+
+   Logica d la relay station
+
+
+
 
 2.4.1.  Printing Direct to a Printer
 
@@ -1048,38 +1054,12 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
 
 Informative References
 
-   [1]   Reynolds, J., Ed., and R. Braden, Ed., "Instructions to Request
-         for Comments (RFC) Authors", Work in Progress, August 2004.
+   [1]   McKay, Robert, et al. "Non-Keplerian orbits using low thrust, 
+         high isp propulsion systems." 60th International Astronautical 
+         Congress. 2009.
 
-   [2]   Bradner, S., Ed., and J. Contreras, Ed., "Rights Contributors
-         Provide to the IETF Trust", BCP 78, RFC 5378, November 2008.
 
-   [3]   Bradner, S., Ed., "Intellectual Property Rights in IETF
-         Technology", BCP 79, RFC 3979, March 2005.
 
-   [4]   RFC Editor, "Formatting RFCS",
-         http://www.rfc-editor.org/formatting.html.
-
-   [5]   IETF, "Guidelines to Authors of Internet Drafts".  Available as
-         1id-guidelines.txt at http://www.ietf.org.
-
-   [6]   Gahrns, M. and T. Hain, "Using Microsoft Word to create
-         Internet Drafts and RFCs", RFC 3285, May 2002.
-
-   [7]   Rose, M., "Writing I-Ds and RFCs using XML", RFC 2629, June
-         1999.
-
-Author's Address
-
-   Joe Touch
-   USC/ISI
-   4676 Admiralty Way
-   Marina del Rey, CA 90292-6695
-   U.S.A.
-
-   Phone: +1 (310) 448-9151
-   Fax:   +1 (310) 448-9300
-   EMail: touch@isi.edu
 
 
 
