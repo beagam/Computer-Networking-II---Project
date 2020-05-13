@@ -78,7 +78,29 @@ RFC NNNN           	      Uplink to Mars         	       May, 2020
 
 1.  Introduction
 
-1.1.  Question statement
+1.1.  Motivation
+ 
+   With the increasing need for communications in the last years, 
+   the development of technlogy and communications is growing at a very
+   high pace. The design and implementation of interplanetar communications
+   system is one of the key deployments that will done within the next years.
+
+   In the following document, the problem between the communication link
+   between Mars and Earth is addressed, focusing on the time when both
+   planets are in conjunction phase (distance is furthest). The main
+   purpose is the come up with a solution for packet loss due to the
+   strong noise that the Sun is produced.
+
+   The RFC document is divided in several section. Below there is a 
+   question statment that specifies the problem addressed. Section 2
+   describes several key points that need to be considered when 
+   discussing the issue. Section 3 states and describes with detail
+   the specifications such as the IP adressed that will be used, top-level
+   domain and the topology of the network that will reduce the packets
+   lost in tranmission in cojunction phase. Finally, section 4 includes
+   the conclusion and bullet points of the experimental RFC proposed.
+
+1.2.  Question statement
 
    "In just a few years we need to be ready to incorporate the first 
    settlements on Mars into the Internet. This means assigning addresses 
@@ -394,6 +416,8 @@ Informative References
          high isp propulsion systems." 60th International Astronautical 
          Congress. 2009.
 
+   [2]   Space Academy "Communication Delay" 
+         (https://www.spaceacademy.net.au/spacelink/commdly.htm)
 
 
 
