@@ -137,7 +137,7 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
 
 2.1. IP Addresses
 
-   (1) Introduction
+2.1.1 Introduction
     
    In order to connect to the Earth`s Internet network, hosts in Mars
    need IP addresses to be able to use TCP/IP as host in Earth do 
