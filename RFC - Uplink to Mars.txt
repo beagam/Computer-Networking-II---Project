@@ -109,7 +109,7 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
    30 minutes). The proposed solution needs to address the issue of 
    packet damage during transfer from Earth to Mars during opposition 
    (when distance is furthest). In particular, any packet lost in 
-   transit from Earth to Mars would need to be retransmitted, increasing 
+   transit from Earth to Mars would need to be retransmitted, increasing   
    overall delivery latency to absolutely intolerable 75 minutes, thus 
    making any sort of human-to-human interaction totally unmanageable. 
    A reasonable solution to this needs to be suggested, such that 
@@ -135,6 +135,78 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
 2.2.  Addresses
 
 
+2.1. IP Addresses
+
+   (1) Introduction
+    
+   In order to connect to the Earth`s Internet network, hosts in Mars
+   need IP addresses to be able to use TCP/IP as host in Earth do 
+   almost every time when using Internet conexion.
+  
+   IPv4 have already runned out in Earth and IPv6 is being deployed 
+   slowly due to introduce IPv6 to completely sustitude IPv4 would be 
+   very costly regarding both hardware and software and because there 
+   are watechniquesys, like Ipv6 transition tunneling to allow both 
+   versions to coexist. In our case, as we are going to develop the 
+   network from scratch, we have decided to use IPv6 from the 
+   beginning.  
+
+   This IPs could be assigned manualy if desired, but this is a very 
+   tedious work that makes no sense when designing a network topology 
+   continiously changing and growing. As said beofore, assign static 
+   IPs is always a chioce and in some cases is even better for specific
+   needs, but an automatic procedure is required to simplify and 
+   automate the configuration of the internet access and make life 
+   easier to every client of the network who desired it.
+
+   (3) IPv6 addresses
+
+   In the earth, only three /3 IPv6 addresses blocks are used and 
+   that’s enough to cover all the needs by the moment, so we have 
+   decided to start using only one /3 block to cover all Mars due to at
+   the beginning there would be only some small settlements and in case
+   the population increase leading to the need of more IP addresses, we
+   can always extend the range.
+
+   As in the Earth, a Regional Internet Registry (RIR) would be created 
+   to manage the IPv6 addresses allocated to Mars and distribute them 
+   between the different Internet Service Providers (ISP) whose task 
+   would be to assign these IPs to the clients in Mars in a reasonable 
+   manner. ISPs receive groups of addresses with prefix /48 and these or
+   subnets derived from them are the ones delivered to the clients. 
+   Besides, as in IPv4, in order to save addresses and hide private
+   networks, Network Address Translation (NAT) is going to be 
+   implemented to map theses public addresses into several private ones 
+   allowing to create private networks that access the internet using a 
+   single public IPv6 Network.
+
+	 (2) SLAAC & DHCP for dynamic IPs
+
+	 For the dynamic assignment of IPs presented before, IPv6 offers two
+   kinds of address autoconfiguration. 
+   
+   On the one hand, stateful autoconfiguration technique is accomplished 
+   using the well-known Dynamic Host Configuration Protocol for IPv6
+   (DHCPv6) specified in the RFC 8415. This protocol, the evolution of 
+   DHCP used in IPv4, uses DHCP servers that assigns dynamically IPv6 
+   addresses and other configuration information needed to stablish a 
+   connection to the rest of IP networks, like network masks, a default
+   gateway and DNS server, to every host (DCHP client) that request it 
+   and prove to have the rights to get that information.
+
+   On the second hand, a new approach, Stateless Address 
+   Autoconfiguration (SLAAC), defined in the RFC 7217 has being 
+   developed allowing    IPv6 hosts to automatically generate IP 
+   addresses internally without communicate with any other node in the
+   network and in a secure way. First, a 64-bit prefix is assigned to a 
+   node interface and then, the 64 bits missing are assigned using the 
+   EUI-64 ADDRESS FORMAT and some unique and known information like MAC 
+   addresses. This method is very useful and simple but other information
+   may be required, like DNS servers or IPv6 prefixes. In order to get
+   this info, hosts can use DHCP together with SLAAC or another stateless 
+   autoconfiguration protocol, Neighbour Discovery Protocol (ND), used to
+   get information required for internet communication like DNS or default
+   gateways.
 
  
 
