@@ -96,8 +96,7 @@ RFC NNNN           	      Uplink to Mars         	       May, 2020
 
 Touch                         Informational                     [Page 3]
 
-RFC 5385           Version 2.0 Microsoft Word Template     February 2010
-
+RFC NNNN          	      Uplink to Mars         	       May, 2020
 
    (easy), top-level domains (also easy) and, most importantly, actually 
    making it possible for colonists to communicate with hosts back on 
@@ -126,7 +125,40 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
    order to stablish the link, it is needed to assign the addresses
    an a top-level domain.
 
-2.1.  Addresses
+2.1. IP Addresses
+ 
+  (1) Introduction
+  
+  In order to connect to the Earth`s Internet network, hosts in Mars
+  need IP addresses to be able to use TCP/IP as host in Earth do almost
+  every time when using Internet conexion.
+  
+  IPv4 have already runned out in Earth and IPv6 is being deployed slowly
+  due to introduce IPv6 to completely sustitude IPv4 would be very costly both in hardware and software  
+  
+  This IPs could be assigned manualy if desired, but this is a very 
+  tedious work that makes no sense when designing a network topology 
+  continiously changing and growing. As said beofore, assign static IPs
+  is always a chioce and in some cases is even better for specific needs,
+  but an automatic procedure is required to simplify and automate
+  the configuration of the internet access and make life easier to every
+  client of the network who desired it.
+  
+  (2) DHCP for dynamic IP assigment
+  
+  For this propose, we are going to use the well-known Dynamic Host Configuration 
+  Protocol version 6 (DHCPv6) specified in the RFC 8415. This protocol, the
+  evolution of DHCP used in IPv4, uses DHCP servers that assigns dynamically 
+  IPv6 addresses and other configuration information needed to stablish a connection
+  to the rest of IP networks, like network masks, a default gateway and DNS server,
+  to every host (DCHP client) that request it and prove to have the rights to get that
+  information.
+  
+  DHCP servers are as in the earth in the routers, and can be configured by the owner 
+  of the router to work in the way they desired
+  
+  (3) IPv6 
+
 
 
 
@@ -143,8 +175,6 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
 
 
 
-
-
 Touch                         Informational                     [Page 5]
 
 RFC 5385           Version 2.0 Microsoft Word Template     February 2010
@@ -153,7 +183,7 @@ RFC 5385           Version 2.0 Microsoft Word Template     February 2010
 2.2.  Top-level domain
 
    According to RFC 920: Domain Requirements, in order to establish a 
-   the following information must be provided to the NIC Domain Registar
+   the following information must be provided to the NIC Domain Register
    (HOSTMASTER@SRI-NIC.ARPA):
 
    1)  The name of the top level domain to join.
