@@ -134,17 +134,20 @@ RFC NNNN          	      Uplink to Mars         	       May, 2020
   every time when using Internet conexion.
   
   IPv4 have already runned out in Earth and IPv6 is being deployed slowly
-  due to introduce IPv6 to completely sustitude IPv4 would be very costly both in hardware and software  
+  due to introduce IPv6 to completely sustitude IPv4 would be very costly
+  regarding both hardware and software and because there are ways to allow 
+  both versions to coexist. In our case, as we are going to develop the 
+  network from scratch, we have decided to use IPv6 from the beginning.  
   
-  This IPs could be assigned manualy if desired, but this is a very 
-  tedious work that makes no sense when designing a network topology 
-  continiously changing and growing. As said beofore, assign static IPs
-  is always a chioce and in some cases is even better for specific needs,
-  but an automatic procedure is required to simplify and automate
-  the configuration of the internet access and make life easier to every
-  client of the network who desired it.
+  IPs could be assigned manualy if desired, but this is a very 
+  tedious work that makes no sense when designing a network topology
+  planed to be continiously changing and growing. As said beofore, assign 
+  static IPs is always a chioce and in some cases is even better for specific
+  needs, but an automatic procedure is required to simplify and automate the 
+  configuration of the internet access and make life easier to every client of
+  the network who desired it.
   
-  (2) DHCP for dynamic IP assigment
+  (2) SLAAC and DHCP for dynamic IP assigment
   
   For this propose, we are going to use the well-known Dynamic Host Configuration 
   Protocol version 6 (DHCPv6) specified in the RFC 8415. This protocol, the
