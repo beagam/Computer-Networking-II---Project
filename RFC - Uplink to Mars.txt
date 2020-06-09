@@ -1,5 +1,3 @@
-
-
 Independent Submission                                            Task 2
 Request for Comments: NNNN                            Tampere University
 Category: Experimental                                         May, 2020
@@ -9,11 +7,11 @@ Category: Experimental                                         May, 2020
 
 Abstract
 
-   This document describes the functionalities  and requirements needed in
-   order to establish the uplink communication system from Mars to Earth.
-   Several procedures are suggested so the latency is reduced when 
-   processing missing packages. The addresses that will be used and the 
-   submission for a domain are stated as basic specifications.
+   This document describes the functionalities and requirements needed
+   in order to establish the uplink communication system from Mars to
+   Earth. Several procedures are suggested so the latency is reduced 
+   when processing missing packages. The addresses that will be used and
+   the submission for a domain are stated as basic specifications.
 
    Suggestions regarding the management of missing packages so that the
    latency is below 45 minutes are made, focusing on the situation where
@@ -24,29 +22,11 @@ Abstract
 
    On the application layer, TCP/IP is used for convenience, as it is
    widely used and the code is avaliable.
-
-Status of This Memo
-
-   This document is published for informational purposes as a part of a 
-   project of the course Computer Networking II at Tampere University.
-
-
+   
 Task 2                          Experimental                    [Page 1]
-
+ 
+
 RFC NNNN          	           Uplink to Mars         	       May, 2020
-
-
-Copyright Notice
-
-   Copyright (c) 2010 IETF Trust and the persons identified as the
-   document authors.  All rights reserved.
-
-   This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents
-   (http://trustee.ietf.org/license-info) in effect on the date of
-   publication of this document.  Please review these documents
-   carefully, as they describe your rights and restrictions with respect
-   to this document.
 
 Table of Contents
 
@@ -64,32 +44,24 @@ Table of Contents
         3.1.3.  Top-level domain ......................................7
       3.2.  Relay station .............................................8
         3.2.1.  Location ..............................................8
-        3.2.2.  Funcionality ..........................................9
+        3.2.2.  Functionality .........................................9
    4.  Conclusions ...................................................10
-   References ........................................................11
-      
-
-
-
-
-
-
-
-
+   5.  References ....................................................11
+   6.  Feedback ......................................................11
 
 Task 2                          Experimental                    [Page 2]
-
+ 
+
 RFC NNNN          	           Uplink to Mars         	       May, 2020
 
 
 1.  Introduction
-
-1.1.  Motivation
  
    With the increasing need for communications in the last years, 
-   the development of technlogy and communications is growing at a very
-   high pace. The design and implementation of interplanetar communications
-   system is one of the key deployments that will done within the next years.
+   the development of technology and communications is growing at a very
+   high pace. The design and implementation of interplanetary 
+   communications system is one of the key deployments that will done
+   within the next years.
 
    In the following document, the problem between the communication link
    between Mars and Earth is addressed, focusing on the time when both
@@ -97,216 +69,172 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
    purpose is the come up with a solution for packet loss due to the
    strong noise that the Sun is produced.
 
-   The RFC document is divided in several section. Below there is a 
-   question statment that specifies the problem addressed. Section 2
+   The RFC document is divided in several section. Section 2
    describes several key points that need to be considered when 
    discussing the issue. Section 3 states and describes with detail
-   the specifications such as the IP adressed that will be used, top-level
-   domain and the topology of the network that will reduce the packets
-   lost in tranmission in cojunction phase. Finally, section 4 includes
-   the conclusion and bullet points of the experimental RFC proposed.
+   the specifications such as the IP address that will be used and
+   top-level domain. Finally, section 4 includes the conclusion and 
+   bullet points of the experimental RFC proposed.
 
-1.2.  Question statement
 
-   "In just a few years we need to be ready to incorporate the first 
-   settlements on Mars into the Internet. This means assigning addresses 
 
 
 
 Task 2                          Experimental                    [Page 3]
-
+ 
+
 RFC NNNN          	           Uplink to Mars         	       May, 2020
-
-
-   (easy), top-level domains (also easy) and, most importantly, actually 
-   making it possible for colonists to communicate with hosts back on 
-   Earth. It is required that users are able to use TCP/IP on the 
-   application layer (as it is too costly to rewrite all software from 
-   scratch), which calls for some sort of proxy servers to address the 
-   issue with propagation time from Mars to Earth (anywhere from 3 to 
-   30 minutes). The proposed solution needs to address the issue of 
-   packet damage during transfer from Earth to Mars during opposition 
-   (when distance is furthest). In particular, any packet lost in 
-   transit from Earth to Mars would need to be retransmitted, increasing   
-   overall delivery latency to absolutely intolerable 75 minutes, thus 
-   making any sort of human-to-human interaction totally unmanageable. 
-   A reasonable solution to this needs to be suggested, such that 
-   overall maximum delay could be confined to somewhere around 45 
-   minutes. Keep in mind that you would likely require some form of 
-   a relay station such that signal could be routed around the Sun 
-   (as it is a pretty strong noise source). The position and 
-   functionality of such relay station is entirely up to your 
-   decision."
-
-
 
 2.  Interplanetary communications
 
-   In order to perform the analysis for a correct communication link between
-   Mars and Earth, there are a few considerations that need to be specified
-   and taken into account.
+   To perform the analysis for a correct communication link between
+   Mars and Earth, there are a few considerations that need to be 
+   specified and considered.
 
 
-   o  interplanetary communications are carried by electromanetic waves, 
-      and the speed of propagation of the waves is about 300,000 kilometers
-      per second.
+   o  Interplanetary communications are carried by electromagnetic waves
+	  with speed of propagation about 300,000 km/s.
 
-   o  the distance between Mars and Earth varies depending on the orbit phase
-      they are in. The minimum distance is 55 million km and the maximum is
-      378 million km.  
+   o  The distance between Mars and Earth varies depending on the orbit 
+	  phase they are in. The minimum distance is 55 million km and the 
+	  maximum is 378 million km.  
 
-   o  the minimum propagation time that can be achieved between Mars and the Earth
-      occurs when they are closest, and it is of around 3 minutes.
+   o  The minimum propagation time that can be achieved between Mars and
+      the Earth occurs when they are closest, and it is of around 3 
+	  minutes.
 
-   o  the maximum propagation time that can be achieved between Mars and the Earth
-      occurs when they are furthest and it is of around 30 minutes.
+   o  The maximum propagation time that can be achieved between Mars and
+      the Earth occurs when they are furthest, around 30 min.
 
-   o  an acceptable overall latency delay is of around 45 minutes, while 75 is
-      totally unaceptable for human interaction.
+   o  An acceptable overall latency delay is of around 45 minutes, while
+	  75 is totally unacceptable for human interaction.
       
       
       
 Task 2                          Experimental                    [Page 4]
-
+ 
+
 RFC NNNN          	           Uplink to Mars         	       May, 2020
 
 
 3.  Proposal
 
-   The proposed solution states a suggestion to be used in order to reduce
-   the overall delay latency due to retrasmission when a packet is lost
-   when it is router around the Sun. The main problem is that the Sun 
-   produces strong noise which damages the packets. This situation
-   takes place when Mars and Earth are in cojunction phase (the Sun is
-   the middle and distance is furthest), the distance between them is of
-   378 million km and the propagation time is of around 30 minutes.
+   The proposed solution states a suggestion to be used in order to 
+   reduce the overall delay latency due to retransmission when a packet 
+   is lost when it is router around the Sun. The main problem is that 
+   the Sun produces strong noise which damages the packets. This 
+   situation takes place when Mars and Earth are in conjunction phase 
+   (the Sun is the middle and distance is furthest), the distance 
+   between them is of 378 million km and the propagation time is of 
+   around 30 minutes.
 
-   If a packet is lost and needs to be retrasmitted, the overall delay will
-   be around 75 minutes in this situation. Also, if the communication link
-   is performed directly by the hosts traveling on the natural orbits around
-   the Sun, it is not going to be possible to communicate continuously for 
-   a time, and there will be a massive amount of packets lost.
+   If a packet is lost and needs to be retransmitted, the overall delay 
+   will be around 75 minutes in this situation. Also, if the 
+   communication link is performed directly by the hosts traveling on 
+   the natural orbits around the Sun, it is not going to be possible to 
+   communicate continuously for a time, and there will be a massive 
+   number of packets lost.
 
-   The proposed solution is to reduce the number of packets lost due to the
-   distance between Mars and Earth. If the packets are not lost because of
-   the conjuntion phase and the noise produced by the Sun, the overall
-   latency will be below 45 minutes, as the propagation time in this 
-   situation between Mars and Earth does not exceed 30 minutes.
-
-   In order to let the packets be correctly transmitted in this situation, 
-   in the present document the use of relay stations is proposed. In 
-   section 4 the location and fuctionality of such is described. Also, the
-   basic specifications for the IP addresses and request for a domain 
-   are described.
-
+   The proposed solution is to reduce the number of packets lost due to 
+   the distance between Mars and Earth. If the packets are not lost 
+   because of the conjunction phase and the noise produced by the Sun,
+   the overall latency will be below 45 minutes, as the propagation time
+   in this situation between Mars and Earth does not exceed 30 minutes.
+   To let the packets be correctly transmitted in this situation, in the
+   present document the use of relay stations is proposed.
 
 3.1.  Basic specifications
 
    In the following section the basic specifications of the 
    communication link between the Earth and Mars are described. In 
    order to establish the link, it is needed to assign the addresses
-   an a top-level domain.
-
-3.1.1.  Network topology
-
-   The network consists of several hosts that use TCP/IP over satellite
-   interplanetar communications, and the proposal is to use two relay
-   stations so that Mars and Earth can be on continuous communications.
+   a top-level domain.
 
 
 Task 2                          Experimental                    [Page 5]
-
+ 
+
 RFC NNNN          	           Uplink to Mars         	       May, 2020
 
 
-3.1.2. IP Addresses
+3.1.1. IP Addresses
 
-3.1.2.1. Introduction
+3.1.1.1. Introduction
     
-   In order to connect to the Earth`s Internet network, hosts in Mars
+   To connect to the Earth`s Internet network, hosts in Mars
    need IP addresses to be able to use TCP/IP as host in Earth do 
-   almost every time when using Internet conexion.
+   almost every time when using Internet connexion.
   
    IPv4 have already runned out in Earth and IPv6 is being deployed 
-   slowly due to introduce IPv6 to completely sustitude IPv4 would be 
+   slowly due to introduce IPv6 to completely substitute IPv4 would be 
    very costly regarding both hardware and software and because there 
-   are watechniquesys, like Ipv6 transition tunneling to allow both 
+   are techniques, like Ipv6 transition tunnelling that allow both 
    versions to coexist. In our case, as we are going to develop the 
    network from scratch, we have decided to use IPv6 from the 
    beginning.  
 
-   This IPs could be assigned manualy if desired, but this is a very 
+   This IPs could be assigned manually if desired, but this is a very 
    tedious work that makes no sense when designing a network topology 
-   continiously changing and growing. As said beofore, assign static 
-   IPs is always a chioce and in some cases is even better for specific
+   continuously changing and growing. As said before, assign static 
+   IPs is always a choice and in some cases is even better for specific
    needs, but an automatic procedure is required to simplify and 
    automate the configuration of the internet access and make life 
    easier to every client of the network who desired it.
 
-3.1.2.2. IPv6 addresses
+3.1.1.2. IPv6 addresses
 
    In the earth, only three /3 IPv6 addresses blocks are used and 
    that’s enough to cover all the needs by the moment, so we have 
-   decided to start using only one /3 block to cover all Mars due to at
-   the beginning there would be only some small settlements and in case
-   the population increase leading to the need of more IP addresses, we
-   can always extend the range.
+   decided to start using only one /3 block to cover all Mars 
+   considering to extend the range if needed.
 
    As in the Earth, a Regional Internet Registry (RIR) would be created 
    to manage the IPv6 addresses allocated to Mars and distribute them 
    between the different Internet Service Providers (ISP) whose task 
    would be to assign these IPs to the clients in Mars in a reasonable 
-   manner. ISPs receive groups of addresses with prefix /48 and these or
-   subnets derived from them are the ones delivered to the clients. 
-   Besides, as in IPv4, in order to save addresses and hide private
+   manner. Besides, as in IPv4, in order to save addresses and hide private
    networks, Network Address Translation (NAT) is going to be 
-   implemented to map theses public addresses into several private ones 
-   allowing to create private networks that access the internet using a 
-   single public IPv6 Network.
+   implemented to map theses public addresses into several private ones.
 
-3.1.2.3. SLAAC & DHCP for dynamic IPs
+3.1.1.3. SLAAC & DHCP for dynamic IPs
 
    For the dynamic assignment of IPs presented before, IPv6 offers two
    kinds of address autoconfiguration. 
    
    On the one hand, stateful autoconfiguration technique is accomplished 
    using the well-known Dynamic Host Configuration Protocol for IPv6
-   (DHCPv6) specified in the RFC 8415. This protocol, the evolution of 
+   (DHCPv6) specified in the RFC 8415 [1] . This protocol, the evolution of 
    DHCP used in IPv4, uses DHCP servers that assigns dynamically IPv6 
    addresses and other configuration information needed to stablish a 
-   connection to the rest of IP networks, like network masks, a default
-   gateway and DNS server, to every host (DCHP client) that request it 
-   and prove to have the rights to get that information.
-
+   connection to the rest of IP networks.
+   
    On the second hand, a new approach, Stateless Address 
-   Autoconfiguration (SLAAC), defined in the RFC 7217 has being 
-   developed allowing    IPv6 hosts to automatically generate IP 
+   Autoconfiguration (SLAAC), defined in the RFC 7217 [2] has being 
+   developed allowing IPv6 hosts to automatically generate IP 
    addresses internally without communicate with any other node in the
-   network and in a secure way. First, a 64-bit prefix is assigned to a 
-   node interface and then, the 64 bits missing are assigned using the 
-   EUI-64 ADDRESS FORMAT and some unique and known information like MAC 
-   addresses. This method is very useful and simple but other information
-   may be required, like DNS servers or IPv6 prefixes. In order to get
-   this info, hosts can use DHCP together with SLAAC or another stateless 
-   autoconfiguration protocol, Neighbour Discovery Protocol (ND), used to
-   get information required for internet communication like DNS or default
-   gateways.
+   network and in a secure way. This method is very useful and simple, but other
+   information may be required, like DNS servers or IPv6 prefixes. In 
+   order to get this info, hosts can use DHCP together with SLAAC or 
+   another stateless autoconfiguration protocol, Neighbour Discovery 
+   Protocol (ND) [3], used to get information required for internet
+   communication like DNS or default gateways.
 
  
 
 Task 2                          Experimental                    [Page 6]
-
+ 
+
 RFC NNNN          	           Uplink to Mars         	       May, 2020
 
 
 
-3.1.3.  Top-level domain
+3.1.2  Top-level domain
 
-   According to RFC 920: Domain Requirements, in order to establish a 
-   the following information must be provided to the NIC Domain Registar
+   According to RFC 920 [7]: Domain Requirements, in order to establish a 
+   the following information must be provided to the NIC Domain Register
    (HOSTMASTER@SRI-NIC.ARPA):
 
-   1)  The name of the top level domain to join.
+   1)  The name of the top-level domain to join.
 
       Name of the domain: COM
 
@@ -315,10 +243,10 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
 
       Administrator
 
-            Organization  Tampere University
+            Organization Tampere University
             Name          Maria
             Title         Executive Director
-            Mail Address  Tampere University (Hervanta Campus)
+            Mail Address Tampere University (Hervanta Campus)
                           Korkeakoulunkatu 7 Kampusareena
                           Tampere, FI. 33720
             Phone Number  555-555-555
@@ -382,16 +310,17 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
 
 
 Task 2                          Experimental                    [Page 7]
-
-RFC NNNN          	           Uplink to Mars         	       May, 2020
+ 
 
+RFC NNNN          	           Uplink to Mars         	       May, 2020
+------------------------------------------------------------------------
 
 3.2.  Relay station
 
    In the following section, the specifications regarding the relay
-   station that will be used in order to route the signal around the
+   station that will be used to route the signal around the
    Sun are described. The purpose of using such station is that the 
-   noise produced in this area will interfer and jam the signal, so 
+   noise produced in this area will interfere and jam the signal, so 
    its use is suggested for cleaning purposes. The proposal includes
    two spacecrafts acting as relay stations.
 
@@ -402,38 +331,35 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
    will follow the natural orbit around the Sun (also referred as orbit
    A) called the Keplerian orbits. If the relay station is placed on the
    Keplerian orbits, the communications will be blocked by the Sun at 
-   some points, which will lead to uncontinuous communications between
+   some points, which will lead to noncontinuous communications between
    the Earth and Mars.
 
    According to the paper "Non-Keplerian Orbits Using Low Thrust,
-   High ISP Propulsion Systems" there is a way
-   to overcome this problem, by placing the satellite on the B orbits
-   (also called non-Keplerian orbits), which are displaced orbits. It has
-   been shown that if you can provide continuous thrust, it is possible to
-   place two different satellites that would work as the relay stations
-   and provide continuous communications between the Earth and Mars. There
-   is need to place two relay stations beacause that way it is ensured that
-   that at least one of them would always be in view of both planets,
-   according to the ESA engineer.
+   High ISP Propulsion Systems" [4] there is a way
+   to overcome this problem, by placing two satellites on the B orbits
+   (also called non-Keplerian orbits), which are artificialy displaced 
+   orbits. It has been shown that if you can provide continuous thrust, 
+   it is possible to place two different satellites that would work as 
+   the relay stations and provide continuous communications between the 
+   Earth and Mars. There is need to place two relay stations because 
+   that way it is ensured that that at least one of them would always be
+   in view of both planets.
 
-   The process of thrusting is a high-consumption task for the spacecraft, 
-   so the idea is to place the satellites on the B orbits while the 
-   conjuction season lasts (when the Eart and Mars are furthest). Once it 
-   is over, they will go back to the Keplerian orbits and save fuel.
-
-   Therefore, the suggested location for the relay stations is the B orbit
-   of Mars.
-   
+   The process of thrusting is a high-consumption task for the 
+   spacecraft, so, the idea is to place the satellites on the B orbits 
+   while the conjunction phase and once it is over,they will go back to 
+   the Keplerian orbits to save fuel.
    
 Task 2                          Experimental                    [Page 8]
-
+ 
+
 RFC NNNN          	           Uplink to Mars         	       May, 2020
 
 
-3.2.2.  Funcionality
+3.2.2.  Functionality
 
    Once we have deal with the problem of the link blocked by the sun
-   in the conjunction scenario we have to deal with the problem packet 
+   in the conjunction scenario we must deal with the problem packet 
    delivery in a reasonable time that allows colonists to communicate 
    with hosts back on Earth. These relays will have two different radio 
    links, a link to the surface of Mars and a link to a satellite 
@@ -451,57 +377,75 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
    done, increasing the latency to twice the transmission time plus the 
    expected time needed to receive the ack, transmission time again. We 
    know in advance that transmission time from Earth to Mars goes from 3 
-   to 30 minutes and in this scenario, retransmissions are not a choice
+   to 30 min and in this scenario, retransmissions are not a choice
    because we overcome the 45 min requested as maximum delay. 
    
    As we want to avoid retransmissions in the interplanetary link, we 
-   have to avoid the packets to be damaged and those no retransmissions 
+   must avoid the packets to be damaged and those no retransmissions 
    are needed. Although we have solved the problem for packet damage 
    when the sun is in between both planets by using the relays, 
    packets can still be lost for other reasons like congestion or 
    interfaces.
+
+   This leads us to our solution to the retransmission problem, that 
+   involves the concepts of Store and Forward [5] and Forward Error 
+   Correction (FEC) [6]. 
    
-   This lead us to our solution to the retransmission problem, that involves 
-   the concept of Store and Forward. This concept is based on the idea of 
-   storing the incoming packets until the link is available and free of 
+   Store and Forward is based on the idea of storing the 
+   incoming packets until the link is available and free of 
    interferences. In this way, packets will never be lost due to a 
-   continuous update of the link state will be done to let both ends of 
-   the links know when transmission can be done. To actualize
-   and keep tack of the link state, a signalling protocol is going to 
-   be deployed to enhance the performance of the TCP/IP.
+   continuous update of the link state will be done to let both
+   ends of the links know when transmission can be done. To actualize
+   and keep track of the link state, a signalling protocol is going to 
+   be deployed to enhance the performance of the TCP/IP. Besides, the
+   use of retransmissions is going to be limited to only one hop, so the 
+   link is splitted in small links that correct the errors and do the
+   retransmissions independently avoiding retransmitting the message from 
+   the beginning with the help of the Store and Forward.
+   
+   Forward Error Correction (FEC) is a technique used to control and 
+   correct errors in the receiver side of an unreliable or noisy 
+   communication channels avoiding the use of retransmissions. 
+   This is done by encoding the message in a redundant way. The 
+   redundancy allows to notice error in the message and sometimes, 
+   correct those without the need of retransmissions. The only problem is
+   that you need more bandwidth, but in and interplanetary link this
+   is not a problem. 
    
    This signalling system is very simple. It only consists of some 
    periodical signals sent each 30 seconds from both ends in order 
    to let the other end of the link whether the link has some problem 
-   or not. These signals are known by both ends and those they
-   can see ow the signal has been modified by the link and in this way 
-   estimate if the link can introduce errors or if its safe to transmit 
-   the traffic previously stored.
-   
+   or not in an approximated way. These signals are known by both ends 
+   and those they can see how the signal has been modified by the link 
+   and in this way estimate if the link can introduce a high amount of
+   errors or if it is more or less safe to transmit the data traffic
+   previously stored.
+
    In addition, some other solutions would be useful to reduce the 
    congestion situation and in this way to reduce the packet lost and 
-   decrease the waiting. The first one would be obviously copying all the 
-   internet information and store it in new servers in mars so most of 
-   the data is already stored in Mars and those only live data should be
-   transmitted over the interplanetary link. Secondly, due to the long 
-   distances data is exposed to very high jitter and those it may not 
-   arrive at the same time. To deal with it, de-jittered buﬀer could 
+   decrease the waiting. The first one would be obviously copying all 
+   the internet information and store it in new servers in mars so most
+   of the data is already stored in Mars and those only live data should
+   be transmitted over the interplanetary link. Secondly, due to the 
+   long distances data is exposed to very high jitter and those it may 
+   not arrive at the same time. To deal with it, de-jittered buﬀer could 
    be used in order the receiver to be able to get all the data in 
    one piece.
+
 
    
 
 
 Task 2                          Experimental                    [Page 9]
-
+ 
+
 RFC NNNN          	           Uplink to Mars         	       May, 2020
 
 
 
 4.  Conclusions
 
-
-The task to create an interplanetary internet between Earth and Mars 
+	The task to create an interplanetary internet between Earth and Mars 
 	is not a choice with the technology we have nowadays due to the
 	huge latencies and delays that the large distances and diverse 
 	mediums introduce. However, the solution we propose bring us a step 
@@ -515,38 +459,28 @@ The task to create an interplanetary internet between Earth and Mars
 
 
 
-Task 2                          Experimental                    [Page 10]
-
+Task 2                          Experimental                   [Page 10]
+ 
+
 RFC NNNN          	           Uplink to Mars         	       May, 2020
 
-Informative References
-
-   [1]   McKay, Robert, et al. "Non-Keplerian orbits using low thrust, 
+5. Informative References
+	
+   [1]	RFC 8415 (ttps://tools.ietf.org/html/rfc8415)
+   [2]  RFC 7217 (https://tools.ietf.org/html/rfc7217)
+   [3]  RFC 4861 (https://tools.ietf.org/html/rfc4861)
+   [4]   McKay, Robert, et al. "Non-Keplerian orbits using low thrust, 
          high isp propulsion systems." 60th International Astronautical 
          Congress. 2009.
+   [5]  Store and Forward (https://en.wikipedia.org/wiki/Store_and_forward)
+   [6]  Forward_error_correction (https://en.wikipedia.org/wiki/Forward_error_correction)	           
+   [7]  RFC 920 (https://tools.ietf.org/html/rfc920)
 
-   [2]   Space Academy "Communication Delay" 
-         (https://www.spaceacademy.net.au/spacelink/commdly.htm)
-         
-   [3]   NASA "Advanced Exploration Systems"
-         (https://www.nasa.gov/content/dtn)
-         
-   [4] 
-         (https://scienceandtechnology.jpl.nasa.gov/research/research-topics-
-           list/communications-computing-software/deep-space-communications)
-           
-   [RFC920]  https://tools.ietf.org/html/rfc920
-
-
-
-
-
-
-
-
-
-
-
-Task 2                          Experimental                    [Page 11]
-
-RFC NNNN          	           Uplink to Mars         	       May, 2020
+6.  Feedback 
+	
+	We are not going to take in account feedbacks 1,3 & 7 due to they didn't
+	put any effort in the correction process or explaining they advices and they 
+    do not provide any valuable information to improve the report.
+	
+	On the other hand, I really appreciate the second feedback, its very 
+	useful due to the new ideas and small errors it mentions.
