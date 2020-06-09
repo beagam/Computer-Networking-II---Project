@@ -1,6 +1,7 @@
-Independent Submission                                            Task 2
+Independent Submission                        Beatriz Gómez-Angulo Muñoz
+						 Jerónimo García Delgado
 Request for Comments: NNNN                            Tampere University
-Category: Experimental                                         May, 2020
+Category: Experimental                                         May 2020
 
 
                   	     Uplink to Mars
@@ -15,44 +16,43 @@ Abstract
 
    Suggestions regarding the management of missing packages so that the
    latency is below 45 minutes are made, focusing on the situation where
-   the Earth and Mars are furthest (when the Sun is the middle). The use
+   the Earth and Mars are furthest (when the Sun is in the middle). The use
    of a relay station is suggested, specifying the location and logical
-   functionality of such station, in order to proccess the missing 
+   functionality of such station, in order to process the missing 
    packets.
 
    On the application layer, TCP/IP is used for convenience, as it is
-   widely used and the code is avaliable.
+   widely used and the code is available
+
    
 Task 2                          Experimental                    [Page 1]
  
 
-RFC NNNN          	           Uplink to Mars         	       May, 2020
+RFC NNNN          	           Uplink to Mars              May  2020
 
 Table of Contents
 
-   1. Introduction ....................................................3
-      1.1. Motivation .................................................3
-      1.2. Question statement .........................................3
-   2.  Interplanetary communications ..................................4
-   3.  Proposal .......................................................5
-      3.1.  Basic specifications  .....................................5
-        3.1.1  Network topology .......................................5
-        3.1.2. IP Addresses ...........................................6
-          3.1.2.1. Introduction .......................................6
-          3.1.2.2. IPv6 addresses .....................................6
-          3.1.2.3 SLAAC & DHCP for dynamic IPs ........................6
-        3.1.3.  Top-level domain ......................................7
-      3.2.  Relay station .............................................8
-        3.2.1.  Location ..............................................8
-        3.2.2.  Functionality .........................................9
-   4.  Conclusions ...................................................10
-   5.  References ....................................................11
+   1. Introduction ....................................................2
+   2.  Interplanetary communications ..................................3
+   3.  Proposal .......................................................4
+      3.1.  Basic specifications  .....................................4
+        3.1.1  Network topology .......................................4
+        3.1.2. IP Addresses ...........................................5
+          3.1.2.1. Introduction .......................................5
+          3.1.2.2. IPv6 addresses .....................................5
+          3.1.2.3. SLAAC & DHCP for dynamic IPs .......................5
+        3.1.3.  Top-level domain ......................................6
+      3.2.  Relay station .............................................7
+        3.2.1.  Location ..............................................7
+        3.2.2.  Functionality .........................................8
+   4.  Conclusions ....................................................9
+   5.  References ....................................................10
    6.  Feedback ......................................................11
 
 Task 2                          Experimental                    [Page 2]
  
 
-RFC NNNN          	           Uplink to Mars         	       May, 2020
+RFC NNNN          	         Uplink to Mars               May  2020
 
 
 1.  Introduction
@@ -60,7 +60,7 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
    With the increasing need for communications in the last years, 
    the development of technology and communications is growing at a very
    high pace. The design and implementation of interplanetary 
-   communications system is one of the key deployments that will done
+   communications system is one of the key deployments that will be done
    within the next years.
 
    In the following document, the problem between the communication link
@@ -69,7 +69,7 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
    purpose is the come up with a solution for packet loss due to the
    strong noise that the Sun is produced.
 
-   The RFC document is divided in several section. Section 2
+   The RFC document is divided into several sections. Section 2
    describes several key points that need to be considered when 
    discussing the issue. Section 3 states and describes with detail
    the specifications such as the IP address that will be used and
@@ -83,7 +83,7 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
 Task 2                          Experimental                    [Page 3]
  
 
-RFC NNNN          	           Uplink to Mars         	       May, 2020
+RFC NNNN                    Uplink to Mars         	       May  2020
 
 2.  Interplanetary communications
 
@@ -114,7 +114,7 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
 Task 2                          Experimental                    [Page 4]
  
 
-RFC NNNN          	           Uplink to Mars         	       May, 2020
+RFC NNNN          	        Uplink to Mars         	       May, 2020
 
 
 3.  Proposal
@@ -124,13 +124,13 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
    is lost when it is router around the Sun. The main problem is that 
    the Sun produces strong noise which damages the packets. This 
    situation takes place when Mars and Earth are in conjunction phase 
-   (the Sun is the middle and distance is furthest), the distance 
+   (the Sun is in the middle and distance is furthest), the distance 
    between them is of 378 million km and the propagation time is of 
    around 30 minutes.
 
    If a packet is lost and needs to be retransmitted, the overall delay 
    will be around 75 minutes in this situation. Also, if the 
-   communication link is performed directly by the hosts traveling on 
+   communication link is performed directly by the hosts travelling on 
    the natural orbits around the Sun, it is not going to be possible to 
    communicate continuously for a time, and there will be a massive 
    number of packets lost.
@@ -154,8 +154,8 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
 Task 2                          Experimental                    [Page 5]
  
 
-RFC NNNN          	           Uplink to Mars         	       May, 2020
-------------------------------------------------------------------------
+RFC NNNN          	        Uplink to Mars         	       May  2020
+
 
 3.1.1. IP Addresses
 
@@ -165,7 +165,7 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
    need IP addresses to be able to use TCP/IP as host in Earth do 
    almost every time when using Internet connexion.
   
-   IPv4 have already runned out in Earth and IPv6 is being deployed 
+   IPv4 has already run out in Earth and IPv6 is being deployed 
    slowly due to introduce IPv6 to completely substitute IPv4 would be 
    very costly regarding both hardware and software and because there 
    are techniques, like Ipv6 transition tunnelling that allow both 
@@ -203,22 +203,22 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
 
    We could use DHCPv6 [1] as in IPv4 but we are going to make use of a 
    new approach, the Stateless Address Autoconfiguration (SLAAC), 
-   defined in the RFC 7217 [2] that has being developed to allow IPv6 hosts 
+   defined in the RFC 7217 [2] that has been developed to allow IPv6 hosts 
    to automatically generate IP addresses internally without communicate
    with any other node in the network and in a secure way. This method 
    is very useful and simple, but other information may be required, 
    like DNS servers or IPv6 prefixes. In order to get this info, hosts 
    can use DHCPv6 together with SLAAC or another stateless 
    autoconfiguration protocol, Neighbour Discovery Protocol (ND) [3],
-   used to get information required for internet communication like DNS 
-   or default gateways.
+   used to get the information required for internet communication like 
+   DNS or default gateways.
 
  
 
 Task 2                          Experimental                    [Page 6]
  
 
-RFC NNNN          	           Uplink to Mars         	       May, 2020
+RFC NNNN          	        Uplink to Mars         	       May  2020
 
 
 
@@ -276,38 +276,21 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
       Name of the domain: MARS
 
 
-   6)  A description of the servers that provides the domain service for
+   6)  A description of the servers that provide the domain service for
    translating name to address for hosts in this domain, and the date
    they will be operational.
 
-      Our server meets the requierements of the current standards, and
+      Our server meets the requirements of the current standards, and
       provides communications from the Earth to Mars, and will be 
       installed and operational on 1-January 2022.
 
-   7)  A description of the server machines:
-
-         (a) hardware and software
-
-            HPE ProLiant DL20 Gen9  and  UNIX
-
-         (b) address
-
-            (Lo q diga Jero)
-
-   8)  An estimate of the number of hosts that will be in the domain.
-
-
-         (a) initially  =  500
-         (b) one year   =  1000
-         (c) two years  =  5000
-         (d) five years =  10000
 
 
 Task 2                          Experimental                    [Page 7]
  
 
-RFC NNNN          	           Uplink to Mars         	       May, 2020
-------------------------------------------------------------------------
+RFC NNNN                     Uplink to Mars         	       May  2020
+
 
 3.2.  Relay station
 
@@ -331,7 +314,7 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
    According to the paper "Non-Keplerian Orbits Using Low Thrust,
    High ISP Propulsion Systems" [4] there is a way
    to overcome this problem, by placing two satellites on the B orbits
-   (also called non-Keplerian orbits), which are artificialy displaced 
+   (also called non-Keplerian orbits), which are artificially displaced 
    orbits. It has been shown that if you can provide continuous thrust, 
    it is possible to place two different satellites that would work as 
    the relay stations and provide continuous communications between the 
@@ -344,20 +327,20 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
    while the conjunction phase and once it is over,they will go back to 
    the Keplerian orbits to save fuel.
    
-Task 2                          Experimental                    [Page 8]
+Task 2                         Experimental                    [Page 8]
  
 
-RFC NNNN          	           Uplink to Mars         	       May, 2020
+RFC NNNN                     Uplink to Mars         	       May  2020
 
 
 3.2.2.  Functionality
 
-   Once we have deal with the problem of the link blocked by the sun
+   Once we have dealt with the problem of the link blocked by the sun
    in the conjunction scenario we must deal with the problem packet 
    delivery in a reasonable time that allows colonists to communicate 
    with hosts back on Earth. These relays will have two different radio 
    links, a link to the surface of Mars and a link to a satellite 
-   network orbiting Earth that will provide connection to the Earths 
+   network orbiting Earth that will provide the connection to the Earth 
    surface. Obviously, the main problem is not in the links from the 
    satellites to the surface of the planet, the big deal is to find a 
    reliable and fast way to transmit the packets through the link 
@@ -393,7 +376,7 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
    and keep track of the link state, a signalling protocol is going to 
    be deployed to enhance the performance of the TCP/IP. Besides, the
    use of retransmissions is going to be limited to only one hop, so the 
-   link is splitted in small links that correct the errors and do the
+   link is split in small links that correct the errors and do the
    retransmissions independently avoiding retransmitting the message from 
    the beginning with the help of the Store and Forward.
    
@@ -401,8 +384,8 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
    correct errors in the receiver side of an unreliable or noisy 
    communication channels avoiding the use of retransmissions. 
    This is done by encoding the message in a redundant way. The 
-   redundancy allows to notice error in the message and sometimes, 
-   correct those without the need of retransmissions. The only problem is
+   redundancy allows to notice errors in the message and sometimes, 
+   correct those without the need for retransmissions. The only problem is
    that you need more bandwidth, but in and interplanetary link this
    is not a problem. 
    
@@ -423,8 +406,7 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
    be transmitted over the interplanetary link. Secondly, due to the 
    long distances data is exposed to very high jitter and those it may 
    not arrive at the same time. To deal with it, de-jittered buﬀer could 
-   be used in order the receiver to be able to get all the data in 
-   one piece.
+   be used so the receiver is able to get all the data in one piece.
 
 
    
@@ -433,7 +415,7 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
 Task 2                          Experimental                    [Page 9]
  
 
-RFC NNNN          	           Uplink to Mars         	       May, 2020
+RFC NNNN                     Uplink to Mars         	       May, 2020
 
 
 
@@ -456,25 +438,27 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
 Task 2                          Experimental                   [Page 10]
  
 
-RFC NNNN          	           Uplink to Mars         	       May, 2020
+RFC NNNN          	        Uplink to Mars         	       May  2020
 
 5. Informative References
 	
    [1]	RFC 8415 (ttps://tools.ietf.org/html/rfc8415)
    [2]  RFC 7217 (https://tools.ietf.org/html/rfc7217)
    [3]  RFC 4861 (https://tools.ietf.org/html/rfc4861)
-   [4]   McKay, Robert, et al. "Non-Keplerian orbits using low thrust, 
-         high isp propulsion systems." 60th International Astronautical 
-         Congress. 2009.
+   [4]  McKay, Robert, et al. "Non-Keplerian orbits using low thrust, 
+        high isp propulsion systems." 60th International Astronautical 
+        Congress. 2009.
    [5]  Store and Forward (https://en.wikipedia.org/wiki/Store_and_forward)
-   [6]  Forward_error_correction (https://en.wikipedia.org/wiki/Forward_error_correction)	           
+   [6]  Forward_error_correction 
+        (https://en.wikipedia.org/wiki/Forward_error_correction)	           
    [7]  RFC 920 (https://tools.ietf.org/html/rfc920)
 
 6.  Feedback 
 	
-	We are not going to take in account feedbacks 1,3 & 7 due to they didn't
-	put any effort in the correction process or explaining they advices and they 
-    	do not provide any valuable information to improve the report.
+	We are not going to take into account feedbacks 1,3 & 7 since they 
+        didn't put any effort in the correction process or explaining they 
+        advices and they do not provide any valuable information to improve 
+        the report.
 	
-	On the other hand, I really appreciate the second feedback, its very 
+	On the other hand, we really appreciate the second feedback, it's very 
 	useful due to the new ideas and small errors it mentions.
