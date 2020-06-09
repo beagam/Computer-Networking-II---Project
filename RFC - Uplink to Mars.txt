@@ -155,7 +155,7 @@ Task 2                          Experimental                    [Page 5]
  
 
 RFC NNNN          	           Uplink to Mars         	       May, 2020
-
+------------------------------------------------------------------------
 
 3.1.1. IP Addresses
 
@@ -192,32 +192,26 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
    to manage the IPv6 addresses allocated to Mars and distribute them 
    between the different Internet Service Providers (ISP) whose task 
    would be to assign these IPs to the clients in Mars in a reasonable 
-   manner. Besides, as in IPv4, in order to save addresses and hide private
-   networks, Network Address Translation (NAT) is going to be 
+   manner. Besides, as in IPv4, in order to save addresses and hide 
+   private networks, Network Address Translation (NAT) is going to be 
    implemented to map theses public addresses into several private ones.
 
 3.1.1.3. SLAAC & DHCP for dynamic IPs
 
    For the dynamic assignment of IPs presented before, IPv6 offers two
    kinds of address autoconfiguration. 
-   
-   On the one hand, stateful autoconfiguration technique is accomplished 
-   using the well-known Dynamic Host Configuration Protocol for IPv6
-   (DHCPv6) specified in the RFC 8415 [1] . This protocol, the evolution of 
-   DHCP used in IPv4, uses DHCP servers that assigns dynamically IPv6 
-   addresses and other configuration information needed to stablish a 
-   connection to the rest of IP networks.
-   
-   On the second hand, a new approach, Stateless Address 
-   Autoconfiguration (SLAAC), defined in the RFC 7217 [2] has being 
-   developed allowing IPv6 hosts to automatically generate IP 
-   addresses internally without communicate with any other node in the
-   network and in a secure way. This method is very useful and simple, but other
-   information may be required, like DNS servers or IPv6 prefixes. In 
-   order to get this info, hosts can use DHCP together with SLAAC or 
-   another stateless autoconfiguration protocol, Neighbour Discovery 
-   Protocol (ND) [3], used to get information required for internet
-   communication like DNS or default gateways.
+
+   We could use DHCPv6 [1] as in IPv4 but we are going to make use of a 
+   new approach, the Stateless Address Autoconfiguration (SLAAC), 
+   defined in the RFC 7217 [2] that has being developed to allow IPv6 hosts 
+   to automatically generate IP addresses internally without communicate
+   with any other node in the network and in a secure way. This method 
+   is very useful and simple, but other information may be required, 
+   like DNS servers or IPv6 prefixes. In order to get this info, hosts 
+   can use DHCPv6 together with SLAAC or another stateless 
+   autoconfiguration protocol, Neighbour Discovery Protocol (ND) [3],
+   used to get information required for internet communication like DNS 
+   or default gateways.
 
  
 
@@ -480,7 +474,7 @@ RFC NNNN          	           Uplink to Mars         	       May, 2020
 	
 	We are not going to take in account feedbacks 1,3 & 7 due to they didn't
 	put any effort in the correction process or explaining they advices and they 
-    do not provide any valuable information to improve the report.
+    	do not provide any valuable information to improve the report.
 	
 	On the other hand, I really appreciate the second feedback, its very 
 	useful due to the new ideas and small errors it mentions.
